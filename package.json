@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "tsc": "tsc --project ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
