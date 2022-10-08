@@ -13,6 +13,8 @@
 	"scripts": {
 		"dev": "react-scripts start",
 		"build": "react-scripts build",
+		"code:check": "run-p --print-label tsc format lint",
+		"code:fix": "run-p --print-label format:fix lint:fix",
 		"tsc": "tsc --project .",
 		"format": "prettier --check .",
 		"format:fix": "prettier --write .",
@@ -33,6 +35,7 @@
 		"@typescript-eslint/parser": "^5.39.0",
 		"eslint": "^8.25.0",
 		"eslint-plugin-react": "^7.31.8",
+		"npm-run-all": "^4.1.5",
 		"prettier": "^2.7.1",
 		"react-scripts": "5.0.1",
 		"typescript": "^4.8.4"
