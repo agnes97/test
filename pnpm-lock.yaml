@@ -10,7 +10,6 @@ specifiers:
   react-redux: ^8.0.4
   react-scripts: 5.0.1
   typescript: ^4.8.4
-  web-vitals: ^2.1.4
 
 dependencies:
   '@reduxjs/toolkit': 1.8.5_kuo2ie247izvzll3jejufdtq3q
@@ -22,7 +21,6 @@ dependencies:
   react-redux: 8.0.4_yfr4m6wk75wdra335rld4tkrbu
   react-scripts: 5.0.1_mojkb66nrb35nkdmirjres5uq4
   typescript: 4.8.4
-  web-vitals: 2.1.4
 
 packages:
 
@@ -9346,10 +9344,6 @@ packages:
     resolution: {integrity: sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==}
     dependencies:
       minimalistic-assert: 1.0.1
-    dev: false
-
-  /web-vitals/2.1.4:
-    resolution: {integrity: sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==}
     dev: false
 
   /webidl-conversions/4.0.2:
