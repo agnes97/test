@@ -1,48 +1,51 @@
 {
-  "name": "moovy",
-  "version": "0.1.0",
-  "author": "Jana Chaloupková <janachaloupkova97@gmail.com> (http://github.com/agnes97)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/agnes97/moovy"
-  },
-  "private": true,
-  "engines": {
-    "node": "^16"
-  },
-  "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "tsc": "tsc --project ."
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.4"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.45",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.8.4"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "moovy",
+	"version": "0.1.0",
+	"author": "Jana Chaloupková <janachaloupkova97@gmail.com> (http://github.com/agnes97)",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/agnes97/moovy"
+	},
+	"private": true,
+	"engines": {
+		"node": "^16"
+	},
+	"scripts": {
+		"dev": "react-scripts start",
+		"build": "react-scripts build",
+		"tsc": "tsc --project .",
+		"format": "prettier --check .",
+		"format:fix": "prettier --write ."
+	},
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.8.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-redux": "^8.0.4"
+	},
+	"devDependencies": {
+		"@types/node": "^17.0.45",
+		"@types/react": "^18.0.21",
+		"@types/react-dom": "^18.0.6",
+		"prettier": "^2.7.1",
+		"react-scripts": "5.0.1",
+		"typescript": "^4.8.4"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }

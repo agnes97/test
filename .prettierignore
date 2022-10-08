@@ -1,0 +1,6 @@
+# CONFIGURATION
+tsconfig.json
+
+# GENERATED
+build/
+pnpm-lock.yaml
