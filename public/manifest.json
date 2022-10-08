@@ -1,6 +1,8 @@
 {
-	"short_name": "React App",
-	"name": "Create React App Sample",
+	"short_name": "Moovy",
+	"name": "Moovy",
+	"author": "Jana Chaloupková",
+	"description": "React web application called Moovy, that allows users to serach for their favorite movies.",
 	"icons": [
 		{
 			"src": "favicon.ico",
