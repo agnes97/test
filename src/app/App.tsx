@@ -8,6 +8,7 @@ import { Header } from '../features/Header'
 
 import { Home } from '../pages/Home'
 import { MovieDetail } from '../pages/MovieDetail'
+import { RatedMovies } from '../pages/RatedMovies'
 
 export const App: React.FC = () => (
 	<Container
@@ -18,6 +19,7 @@ export const App: React.FC = () => (
 		<Header />
 		<Routes>
 			<Route path="/" element={<Home />} />
+			<Route path="/rated" element={<RatedMovies />} />
 			<Route path="/:id" element={<MovieDetail />} />
 		</Routes>
 		<Footer />
