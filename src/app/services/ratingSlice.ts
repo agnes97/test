@@ -5,17 +5,17 @@ export interface MovieWithRating extends Movie {
 	rating: number
 }
 
-const initialState: MovieWithRating[] = []
+const initialState: Record<string, MovieWithRating> = {}
 
 const ratingSlice = createSlice({
 	name: 'rating',
 	initialState,
 	reducers: {
 		addRatedMovie(
-			state: MovieWithRating[],
+			state: Record<string, MovieWithRating>,
 			action: PayloadAction<MovieWithRating>,
 		) {
-			return [...state, action.payload]
+			return { ...state, [action.payload.imdbID]: action.payload }
 		},
 	},
 })

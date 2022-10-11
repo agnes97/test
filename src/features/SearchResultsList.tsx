@@ -13,6 +13,7 @@ import Pagination from '@mui/material/Pagination'
 import type { Movie, MovieSearch } from '../app/services/omdbAPISlice'
 
 import { Rating } from './Rating'
+import { useAppSelector } from '../common/hooks'
 
 interface Props {
 	result: {
@@ -32,6 +33,7 @@ export const SearchResultsList: React.FC<Props> = ({
 }) => {
 	const navigate = useNavigate()
 	const [page, setPage] = useState(initialPage)
+	const ratings = useAppSelector(state => state.rating)
 
 	const handlePageChange = (
 		changeEvent: ChangeEvent<unknown>,
@@ -90,7 +92,10 @@ export const SearchResultsList: React.FC<Props> = ({
 						</ListItemAvatar>
 						<ListItemText id={imdbID} primary={Title} secondary={Year} />
 					</ListItemButton>
-					<Rating movie={{ imdbID, Poster, Title, Year }} />
+					<Rating
+						ratingValue={ratings[imdbID]?.rating}
+						movie={{ imdbID, Poster, Title, Year }}
+					/>
 				</ListItem>
 			))}
 			<Pagination

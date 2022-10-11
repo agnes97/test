@@ -10,13 +10,15 @@ import { Movie } from '../app/services/omdbAPISlice'
 
 interface RatingProps {
 	movie: Movie
+	ratingValue?: number
 }
 
-export const Rating: React.FC<RatingProps> = ({ movie }) => {
+export const Rating: React.FC<RatingProps> = ({ movie, ratingValue }) => {
 	const dispatch = useAppDispatch()
 
 	return (
 		<MUIRating
+			value={ratingValue ?? 0}
 			precision={0.5}
 			icon={<FavoriteIcon fontSize="inherit" />}
 			emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
