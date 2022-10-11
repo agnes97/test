@@ -1,6 +1,6 @@
 # 𝕄𝕆𝕆𝕍𝕐
 
-React web application called Moovy, that allows users to serach for their favorite movies.
+React web application called Moovy, that allows users to serach for their favorite movies. You can view it on [moovy-agnes97.netlify.app/](https://moovy-agnes97.netlify.app/).
 
 ---
 
@@ -9,6 +9,8 @@ React web application called Moovy, that allows users to serach for their favori
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) in [TypeScript](https://www.typescriptlang.org/) template. Styling is done with [Material UI](https://mui.com/core/) library.
 
 Code quality is ensured with [ESLint](https://eslint.org/) JS linter, [Prettier](https://prettier.io/) code formatter and safeguarded by git pre-commit hook using [Husky](https://typicode.github.io/husky/#/).
+
+Moovy is deployed with [Netlify](https://www.netlify.com/).
 
 ---
 
