@@ -12,7 +12,9 @@ export const Home: React.FC = () => {
 	const [search, result, { lastArg }] = useLazySearchQuery()
 
 	return (
-		<Container>
+		<Container
+			sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+		>
 			<SearchForm
 				onSubmit={({ title, year }) =>
 					search({ input: title, year: year, page: startPage })
@@ -26,5 +28,3 @@ export const Home: React.FC = () => {
 		</Container>
 	)
 }
-
-export default Home

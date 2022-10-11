@@ -7,7 +7,7 @@ import GlobalStyles from '@mui/material/GlobalStyles'
 import CssBaseline from '@mui/material/CssBaseline'
 
 import { store } from './app/store'
-import App from './app/App'
+import { App } from './app/App'
 
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'

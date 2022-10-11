@@ -7,6 +7,16 @@ export interface Movie {
 	Poster: string
 }
 
+export interface MovieDetail {
+	imdbID: string
+	Title: string
+	Year: string
+	Runtime: string
+	Genre: string
+	Plot: string
+	Poster: string
+}
+
 export interface MovieSearch {
 	Search: Movie[]
 	totalResults: string
@@ -19,6 +29,15 @@ export const omdbAPISlice = createApi({
 	reducerPath: 'omdbAPI',
 	baseQuery: fetchBaseQuery({ baseUrl }),
 	endpoints: builder => ({
+		getMovie: builder.query<MovieDetail, string>({
+			query: id => ({
+				url: '',
+				params: {
+					apikey,
+					i: id,
+				},
+			}),
+		}),
 		search: builder.query<
 			MovieSearch,
 			{ input: string; year: string; page: number }
@@ -36,4 +55,4 @@ export const omdbAPISlice = createApi({
 	}),
 })
 
-export const { useLazySearchQuery } = omdbAPISlice
+export const { useLazySearchQuery, useGetMovieQuery } = omdbAPISlice

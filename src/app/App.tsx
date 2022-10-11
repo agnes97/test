@@ -6,7 +6,8 @@ import Container from '@mui/material/Container'
 import { Footer } from '../features/Footer'
 import { Header } from '../features/Header'
 
-import Home from '../pages/Home'
+import { Home } from '../pages/Home'
+import { MovieDetail } from '../pages/MovieDetail'
 
 export const App: React.FC = () => (
 	<Container
@@ -15,12 +16,10 @@ export const App: React.FC = () => (
 		sx={{ display: 'flex', flexDirection: 'column', gap: '1rem', flexGrow: 1 }}
 	>
 		<Header />
-		{/* TODO: MUI MIN HEIGHT 100VH RESEARCH! */}
 		<Routes>
 			<Route path="/" element={<Home />} />
+			<Route path="/:id" element={<MovieDetail />} />
 		</Routes>
 		<Footer />
 	</Container>
 )
-
-export default App
