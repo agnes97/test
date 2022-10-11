@@ -1,18 +1,29 @@
 import React from 'react'
-import { useSearchQuery } from '../app/services/omdbAPISlice'
+
+import Container from '@mui/material/Container'
+
+import { SearchForm } from '../features/SearchForm'
+import { SearchResultsList } from '../features/SearchResultsList'
+import { useLazySearchQuery } from '../app/services/omdbAPISlice'
+
+const startPage = 1
 
 export const Home: React.FC = () => {
-	const { data, isLoading } = useSearchQuery('programmer')
-
-	if (isLoading) return <div>Loading...</div>
-	if (!data?.Search?.length) return <div>Missing Movies!</div>
+	const [search, result, { lastArg }] = useLazySearchQuery()
 
 	return (
-		<ul>
-			{data.Search.map(movie => (
-				<li key={movie.imdbID}>{movie.Title}</li>
-			))}
-		</ul>
+		<Container>
+			<SearchForm
+				onSubmit={({ title, year }) =>
+					search({ input: title, year: year, page: startPage })
+				}
+			/>
+			<SearchResultsList
+				result={result}
+				search={page => search({ ...lastArg, page })}
+				initialPage={startPage}
+			/>
+		</Container>
 	)
 }
 
