@@ -14,8 +14,12 @@ import HomeIcon from '@mui/icons-material/Home'
 
 import { useGetMovieQuery } from '../app/services/omdbAPISlice'
 
+import { Rating } from '../features/Rating'
+import { useAppSelector } from '../common/hooks'
+
 export const MovieDetail: React.FC = () => {
 	const { id } = useParams()
+	const ratings = useAppSelector(state => state.rating)
 
 	if (!id) return <Navigate to="/" replace={true} />
 
@@ -45,7 +49,18 @@ export const MovieDetail: React.FC = () => {
 				gap: '1rem',
 			}}
 		>
-			<Card elevation={0} sx={{ width: 1, display: 'flex' }}>
+			<Card
+				elevation={0}
+				sx={{
+					width: 1,
+					display: 'flex',
+					flexDirection: {
+						xs: 'column',
+						md: 'row',
+					},
+					alignItems: 'center',
+				}}
+			>
 				{data.Poster === 'N/A' ? (
 					<Avatar
 						{...stringAvatar(data.Title)}
@@ -60,12 +75,21 @@ export const MovieDetail: React.FC = () => {
 						alt={data.Title}
 					/>
 				)}
-				<Box sx={{ padding: '1rem' }}>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '1rem',
+						p: '1rem',
+					}}
+				>
 					<Typography variant="h2">{data.Title}</Typography>
 					<Typography>
 						{data.Year} | {data.Runtime} | {data.Genre}
 					</Typography>
 					<Typography sx={{ pt: '1rem' }}>{data.Plot}</Typography>
+
+					<Rating ratingValue={ratings[data.imdbID]?.rating} movie={data} />
 				</Box>
 			</Card>
 			<Button
