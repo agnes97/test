@@ -9,6 +9,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemButton from '@mui/material/ListItemButton'
+import Typography from '@mui/material/Typography'
 
 import HomeIcon from '@mui/icons-material/Home'
 
@@ -17,56 +18,72 @@ import { Rating } from '../features/Rating'
 
 export const RatedMovies: React.FC = () => {
 	const navigate = useNavigate()
-	const ratedMovies = useAppSelector(state => state.rating)
+	const ratedMovies = useAppSelector(state => Object.values(state.rating))
+
+	if (!ratedMovies.length)
+		return (
+			<Container>
+				<Typography align="center">You have no rated movies! :(</Typography>
+				<Button
+					component={Link}
+					to="/"
+					fullWidth
+					size="large"
+					color="primary"
+					startIcon={<HomeIcon />}
+					sx={{ padding: '1rem' }}
+				>
+					NEW SEARCH
+				</Button>
+			</Container>
+		)
 
 	return (
 		<Container>
 			<List disablePadding sx={{ width: 1 }}>
-				{Object.values(ratedMovies).map(
-					({ imdbID, rating, Poster, Title, Year }) => (
-						<ListItem
-							key={imdbID}
-							divider
-							disablePadding
+				{ratedMovies.map(({ imdbID, rating, Poster, Title, Year }) => (
+					<ListItem
+						key={imdbID}
+						divider
+						disablePadding
+						sx={{
+							display: 'flex',
+							flexDirection: {
+								xs: 'column',
+								md: 'row',
+							},
+							padding: '1rem',
+						}}
+					>
+						<ListItemButton
+							onClick={() => navigate(`/${imdbID}`)}
 							sx={{
 								display: 'flex',
 								flexDirection: {
 									xs: 'column',
 									md: 'row',
 								},
-								padding: '1rem',
 							}}
 						>
-							<ListItemButton
-								onClick={() => navigate(`/${imdbID}`)}
-								sx={{
-									display: 'flex',
-									flexDirection: {
-										xs: 'column',
-										md: 'row',
-									},
-								}}
-							>
-								<ListItemAvatar>
-									<Avatar
-										alt={Title}
-										src={Poster}
-										variant="rounded"
-										sx={{
-											height: '100%',
-											aspectRatio: '3/4',
-										}}
-									/>
-								</ListItemAvatar>
-								<ListItemText id={imdbID} primary={Title} secondary={Year} />
-							</ListItemButton>
-							<Rating
-								ratingValue={rating}
-								movie={{ imdbID, Poster, Title, Year }}
-							/>
-						</ListItem>
-					),
-				)}
+							<ListItemAvatar>
+								<Avatar
+									alt={Title}
+									src={Poster}
+									variant="rounded"
+									sx={{
+										height: '100%',
+										aspectRatio: '3/4',
+									}}
+								/>
+							</ListItemAvatar>
+							<ListItemText id={imdbID} primary={Title} secondary={Year} />
+						</ListItemButton>
+						<Rating
+							ratingValue={rating}
+							movie={{ imdbID, Poster, Title, Year }}
+						/>
+					</ListItem>
+				))}
 			</List>
 			<Button
 				component={Link}
