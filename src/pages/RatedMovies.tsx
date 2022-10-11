@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
@@ -14,11 +14,10 @@ import ListItemButton from '@mui/material/ListItemButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
-import HomeIcon from '@mui/icons-material/Home'
-
+import type { MovieDetail } from '../app/services/omdbAPISlice'
 import { useAppSelector } from '../common/hooks'
 import { Rating } from '../features/Rating'
-import type { MovieDetail } from '../app/services/omdbAPISlice'
+import { BottomNav } from '../features/BottomNav'
 
 export const RatedMovies: React.FC = () => {
 	const navigate = useNavigate()
@@ -29,17 +28,7 @@ export const RatedMovies: React.FC = () => {
 		return (
 			<Container>
 				<Typography align="center">You have no rated movies! :(</Typography>
-				<Button
-					component={Link}
-					to="/"
-					fullWidth
-					size="large"
-					color="primary"
-					startIcon={<HomeIcon />}
-					sx={{ padding: '1rem' }}
-				>
-					NEW SEARCH
-				</Button>
+				<BottomNav />
 			</Container>
 		)
 
@@ -143,17 +132,8 @@ export const RatedMovies: React.FC = () => {
 					</ListItem>
 				))}
 			</List>
-			<Button
-				component={Link}
-				to="/"
-				fullWidth
-				size="large"
-				color="primary"
-				startIcon={<HomeIcon />}
-				sx={{ padding: '1rem' }}
-			>
-				NEW SEARCH
-			</Button>
+
+			<BottomNav />
 		</Container>
 	)
 }

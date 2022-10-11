@@ -1,21 +1,19 @@
 import React from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CircularProgress from '@mui/material/CircularProgress'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 
-import HomeIcon from '@mui/icons-material/Home'
-
 import { useGetMovieQuery } from '../app/services/omdbAPISlice'
 
-import { Rating } from '../features/Rating'
 import { useAppSelector } from '../common/hooks'
+import { Rating } from '../features/Rating'
+import { BottomNav } from '../features/BottomNav'
 
 export const MovieDetail: React.FC = () => {
 	const { id } = useParams()
@@ -94,17 +92,8 @@ export const MovieDetail: React.FC = () => {
 					<Rating ratingValue={ratings[imdbID]?.rating} movieId={imdbID} />
 				</Box>
 			</Card>
-			<Button
-				component={Link}
-				to="/"
-				fullWidth
-				size="large"
-				color="primary"
-				startIcon={<HomeIcon />}
-				sx={{ padding: '1rem' }}
-			>
-				NEW SEARCH
-			</Button>
+
+			<BottomNav />
 		</Container>
 	)
 }

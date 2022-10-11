@@ -11,14 +11,12 @@ interface SearchInput {
 }
 
 interface Props {
+	prevSearchParams: SearchInput
 	onSubmit: (input: SearchInput) => void
 }
 
-export const SearchForm: React.FC<Props> = ({ onSubmit }) => {
-	const [formData, setFormData] = useState<SearchInput>({
-		title: '',
-		year: '',
-	})
+export const SearchForm: React.FC<Props> = ({ onSubmit, prevSearchParams }) => {
+	const [formData, setFormData] = useState<SearchInput>(prevSearchParams)
 
 	const handleInputChange = (
 		inputEvent: React.ChangeEvent<HTMLInputElement>,
