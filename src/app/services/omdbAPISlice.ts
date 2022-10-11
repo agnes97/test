@@ -22,7 +22,7 @@ export interface MovieSearch {
 	totalResults: string
 }
 
-const baseUrl = `http://www.omdbapi.com/`
+const baseUrl = `https://www.omdbapi.com/`
 const apikey = process.env.REACT_APP_OMDB_API_KEY
 
 export const omdbAPISlice = createApi({
