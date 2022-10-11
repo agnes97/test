@@ -9,12 +9,10 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import ListItemButton from '@mui/material/ListItemButton'
 import Pagination from '@mui/material/Pagination'
-import Rating from '@mui/material/Rating'
-
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 
 import type { Movie, MovieSearch } from '../app/services/omdbAPISlice'
+
+import { Rating } from './Rating'
 
 interface Props {
 	result: {
@@ -56,9 +54,20 @@ export const SearchResultsList: React.FC<Props> = ({
 	return (
 		<List disablePadding sx={{ width: 1 }}>
 			{listItems.map(({ imdbID, Poster, Title, Year }) => (
-				<ListItem key={imdbID} disablePadding>
+				<ListItem
+					key={imdbID}
+					divider
+					disablePadding
+					sx={{
+						display: 'flex',
+						flexDirection: {
+							xs: 'column',
+							md: 'row',
+						},
+						padding: '1rem',
+					}}
+				>
 					<ListItemButton
-						divider
 						onClick={() => navigate(`/${imdbID}`)}
 						sx={{
 							display: 'flex',
@@ -80,13 +89,8 @@ export const SearchResultsList: React.FC<Props> = ({
 							/>
 						</ListItemAvatar>
 						<ListItemText id={imdbID} primary={Title} secondary={Year} />
-						{/* TODO: Add rating functionality! */}
-						<Rating
-							precision={0.5}
-							icon={<FavoriteIcon fontSize="inherit" />}
-							emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
-						/>
 					</ListItemButton>
+					<Rating movie={{ imdbID, Poster, Title, Year }} />
 				</ListItem>
 			))}
 			<Pagination
