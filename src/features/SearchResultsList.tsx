@@ -92,10 +92,7 @@ export const SearchResultsList: React.FC<Props> = ({
 						</ListItemAvatar>
 						<ListItemText id={imdbID} primary={Title} secondary={Year} />
 					</ListItemButton>
-					<Rating
-						ratingValue={ratings[imdbID]?.rating}
-						movie={{ imdbID, Poster, Title, Year }}
-					/>
+					<Rating ratingValue={ratings[imdbID]?.rating} movieId={imdbID} />
 				</ListItem>
 			))}
 			<Pagination

@@ -23,7 +23,7 @@ export const MovieDetail: React.FC = () => {
 
 	if (!id) return <Navigate to="/" replace={true} />
 
-	const { data, isLoading } = useGetMovieQuery(id)
+	const { data: movie, isLoading } = useGetMovieQuery(id)
 
 	if (isLoading)
 		return (
@@ -34,11 +34,13 @@ export const MovieDetail: React.FC = () => {
 			</Container>
 		)
 
-	if (!data) return <Navigate to="/" replace={true} />
+	if (!movie) return <Navigate to="/" replace={true} />
 
 	const stringAvatar = (name: string) => ({
 		children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
 	})
+
+	const { imdbID, Genre, Plot, Poster, Runtime, Title, Year } = movie
 
 	return (
 		<Container
@@ -61,9 +63,9 @@ export const MovieDetail: React.FC = () => {
 					alignItems: 'center',
 				}}
 			>
-				{data.Poster === 'N/A' ? (
+				{Poster === 'N/A' ? (
 					<Avatar
-						{...stringAvatar(data.Title)}
+						{...stringAvatar(Title)}
 						variant="rounded"
 						sx={{ width: 200, aspectRatio: '3/4', height: 'inherit' }}
 					/>
@@ -71,8 +73,8 @@ export const MovieDetail: React.FC = () => {
 					<CardMedia
 						component="img"
 						sx={{ width: 200, aspectRatio: '3/4' }}
-						image={data.Poster}
-						alt={data.Title}
+						image={Poster}
+						alt={Title}
 					/>
 				)}
 				<Box
@@ -83,13 +85,13 @@ export const MovieDetail: React.FC = () => {
 						p: '1rem',
 					}}
 				>
-					<Typography variant="h2">{data.Title}</Typography>
+					<Typography variant="h2">{Title}</Typography>
 					<Typography>
-						{data.Year} | {data.Runtime} | {data.Genre}
+						{Year} | {Runtime} | {Genre}
 					</Typography>
-					<Typography sx={{ pt: '1rem' }}>{data.Plot}</Typography>
+					<Typography sx={{ pt: '1rem' }}>{Plot}</Typography>
 
-					<Rating ratingValue={ratings[data.imdbID]?.rating} movie={data} />
+					<Rating ratingValue={ratings[imdbID]?.rating} movieId={imdbID} />
 				</Box>
 			</Card>
 			<Button

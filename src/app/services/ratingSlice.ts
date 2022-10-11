@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Movie } from './omdbAPISlice'
+import { MovieDetail } from './omdbAPISlice'
 
-export interface MovieWithRating extends Movie {
+export interface MovieWithRating extends MovieDetail {
 	rating: number
 }
 

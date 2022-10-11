@@ -55,4 +55,5 @@ export const omdbAPISlice = createApi({
 	}),
 })
 
-export const { useLazySearchQuery, useGetMovieQuery } = omdbAPISlice
+export const { useLazySearchQuery, useGetMovieQuery, useLazyGetMovieQuery } =
+	omdbAPISlice

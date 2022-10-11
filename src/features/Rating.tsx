@@ -1,20 +1,24 @@
 import React from 'react'
 
+import CircularProgress from '@mui/material/CircularProgress'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import MUIRating from '@mui/material/Rating'
 
 import { useAppDispatch } from '../common/hooks'
 import { addRatedMovie } from '../app/services/ratingSlice'
-import { Movie } from '../app/services/omdbAPISlice'
+import { useLazyGetMovieQuery } from '../app/services/omdbAPISlice'
 
 interface RatingProps {
-	movie: Movie
+	movieId: string
 	ratingValue?: number
 }
 
-export const Rating: React.FC<RatingProps> = ({ movie, ratingValue }) => {
+export const Rating: React.FC<RatingProps> = ({ movieId, ratingValue }) => {
 	const dispatch = useAppDispatch()
+	const [getMovie, { isLoading, isUninitialized }] = useLazyGetMovieQuery()
+
+	if (!isUninitialized && isLoading) return <CircularProgress />
 
 	return (
 		<MUIRating
@@ -23,7 +27,11 @@ export const Rating: React.FC<RatingProps> = ({ movie, ratingValue }) => {
 			icon={<FavoriteIcon fontSize="inherit" />}
 			emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
 			onChange={(_, value) => {
-				dispatch(addRatedMovie({ ...movie, rating: value ?? 0 }))
+				getMovie(movieId, true).then(({ data: movie }) => {
+					if (!movie) throw new Error("This movie couldn't be rated!")
+
+					dispatch(addRatedMovie({ ...movie, rating: value ?? 0 }))
+				})
 			}}
 		/>
 	)
