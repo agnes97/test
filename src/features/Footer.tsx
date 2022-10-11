@@ -5,7 +5,12 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
 export const Footer: React.FC = () => (
-	<AppBar position="static" elevation={0} component="footer">
+	<AppBar
+		position="static"
+		elevation={0}
+		component="footer"
+		sx={{ marginTop: 'auto' }}
+	>
 		<Toolbar style={{ justifyContent: 'center' }}>
 			<Typography variant="caption">©2022 Jana Chaloupková</Typography>
 		</Toolbar>

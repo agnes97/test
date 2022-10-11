@@ -2,6 +2,8 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+
+import GlobalStyles from '@mui/material/GlobalStyles'
 import CssBaseline from '@mui/material/CssBaseline'
 
 import { store } from './app/store'
@@ -30,6 +32,15 @@ root.render(
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
+				<GlobalStyles
+					styles={{
+						main: {
+							minHeight: '100vh',
+							display: 'flex',
+							flexDirection: 'column',
+						},
+					}}
+				/>
 				<BrowserRouter>
 					<App />
 				</BrowserRouter>
