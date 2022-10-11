@@ -17,13 +17,23 @@ if (!rootElement) throw new Error('Failed to find the root element!')
 
 const root = createRoot(rootElement)
 
+import {
+	createTheme,
+	responsiveFontSizes,
+	ThemeProvider,
+} from '@mui/material/styles'
+
+const theme = responsiveFontSizes(createTheme())
+
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<CssBaseline />
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</ThemeProvider>
 		</Provider>
 	</React.StrictMode>,
 )
