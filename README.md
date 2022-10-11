@@ -23,7 +23,8 @@ Code quality is ensured with [ESLint](https://eslint.org/) JS linter, [Prettier]
 ## 𝕚𝕟𝕤𝕥𝕒𝕝𝕝𝕒𝕥𝕚𝕠𝕟
 
 1. type `pnpm install` to install dependencies
-2. type `pnpm dev` to open [http://localhost:3000](http://localhost:3000) and view project in the browser
+2. create local `.env` file (see `.env.example` file) and fill the `REACT_APP_OMDB_API_KEY` with your [omdbAPI](http://www.omdbapi.com/) key
+3. type `pnpm dev` to open [http://localhost:3000](http://localhost:3000) and view project in the browser
 
 ---
 
